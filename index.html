@@ -54,34 +54,46 @@
             function clickBtn(){
                 const headNum = document.form1.num.value;
                 const pop = document.querySelector('#pop')
-                const num = headNum * 100;
 
-                for(let i = num ; i < num + 100 ; i++ ){
+                for(let i = 0 ; i < 10 ; i++ ){
                     
-                    const kazu = i+1
-                    if (kazu%2!==0&&kazu%5!==0){
-                        const parent = document.createElement('div');
-                        parent.className = 'parent';
-                        parent.id = "parent";
+                    const kazu = headNum*100+i*10;
+                    const parent = document.createElement('div');
+                    parent.className = 'parent';
+                    parent.id = "parent";
 
-                        for(let j = 0; j < 4; j++){
-                            const child = document.createElement("div");
-                            child.classList.add('box');
-                            child.textContent = kazu;
-            
-                            child.addEventListener('click',()=>{
-                                if (primeNumber(i+1)){
-                                    child.textContent = 'Prime!';
-                                    child.classList.add('win');
-                                }else{
-                                    child.textContent = 'No!';
-                                    child.classList.add('lose');
-                                }
-                            })
-                            parent.appendChild(child);
+                    for(let j = 0; j < 4; j++){
+                        const child = document.createElement("div");
+                        switch(j){
+                            case 0:
+                                kaze = kazu + 1;
+                                break;
+                            case 1:
+                                kaze = kazu + 3;
+                                break;
+                            case 2:
+                                kaze = kazu + 7;
+                                break;
+                            case 3:
+                                kaze = kazu + 9;
+                                break;
                         }
-                    pop.appendChild(parent);
+                        child.textContent = kaze
+                        child.classList.add('box');
+        
+                        child.addEventListener('click',()=>{
+                            if (primeNumber(kaze)){
+                                child.textContent = 'Prime!';
+                                child.classList.add('win');
+                            }else{
+                                child.textContent = 'No!';
+                                child.classList.add('lose');
+                            }
+                        })
+                        parent.appendChild(child);
                     }
+                pop.appendChild(parent);
+                    
                 }
             }
 

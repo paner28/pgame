@@ -5,9 +5,11 @@
         <title>JavaScript Practice</title>
         <style>
             body{
-                display: flex;
                 flex-wrap: wrap;
                 background: #efefef;
+            }
+            .parent{
+                display: flex;
             }
             .box{
                 width: 60px;
@@ -15,10 +17,11 @@
                 background-color: skyblue;
                 cursor: pointer;
                 transition: 0.8s;
-                margin: 0 8px 8px 0;
+                margin: 8px 8px 0 0;
                 text-align: center;
                 line-height: 60px;
                 user-select: none;
+                display: flex;
             }
             .win{
                 background-color: pink;
@@ -35,48 +38,55 @@
         </style>
     </head>
     <body>
-        <p>
+        <div class="parent">
             <form name="form1">
                 <label for="ticketNum">頭の数:</label>
                 <input type="number" name="num" min="0" max="100" value="1">
             </form>
             <input type="button" onclick="disabled = true;clickBtn()" id="button0" value="作成" class="button">
             <input type="button" value="クリア" onclick="getElementById('button0').disabled = false;clearBtn()" class="button">
-        </p>
-
-        <a id="parent"></a>
+        </div>
+        <div id="pop"></div>
 
         <script>
             'use script';
 
             function clickBtn(){
                 const headNum = document.form1.num.value;
-                const num=headNum*100;
-                var parent = document.getElementById("parent");
-                for(let i=num;i<num+100;i++){
+                const pop = document.querySelector('#pop')
+                const num = headNum * 100;
+
+                for(let i = num ; i < num + 100 ; i++ ){
                     
                     const kazu = i+1
                     if (kazu%2!==0&&kazu%5!==0){
-                        const div=document.createElement("div");
-                        div.classList.add('box');
-                        div.textContent = kazu
-        
-                        div.addEventListener('click',()=>{
-                            if (primeNumber(i+1)){
-                                div.textContent='Prime!';
-                                div.classList.add('win');
-                            }else{
-                                div.textContent='No!';
-                                div.classList.add('lose');
-                            }
-                        })
-                        document.body.appendChild(div);
+                        const parent = document.createElement('div');
+                        parent.className = 'parent';
+                        parent.id = "parent";
+
+                        for(let j = 0; j < 4; j++){
+                            const child = document.createElement("div");
+                            child.classList.add('box');
+                            child.textContent = kazu;
+            
+                            child.addEventListener('click',()=>{
+                                if (primeNumber(i+1)){
+                                    child.textContent = 'Prime!';
+                                    child.classList.add('win');
+                                }else{
+                                    child.textContent = 'No!';
+                                    child.classList.add('lose');
+                                }
+                            })
+                            parent.appendChild(child);
+                        }
+                    pop.appendChild(parent);
                     }
                 }
             }
 
             function clearBtn(){
-                var element = document.getElementById("body");
+                var element = document.getElementById("pop");
                 while (element.firstChild) {
                     element.removeChild(element.firstChild);
                 }

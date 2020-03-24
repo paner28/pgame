@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Practice</title>
+        <style>
+            body{
+                display: flex;
+                flex-wrap: wrap;
+                background: #efefef;
+            }
+            .box{
+                width: 60px;
+                height: 60px;
+                background-color: skyblue;
+                cursor: pointer;
+                transition: 0.8s;
+                margin: 0 8px 8px 0;
+                text-align: center;
+                line-height: 60px;
+                user-select: none;
+            }
+            .win{
+                background-color: pink;
+                border-radius: 50%;
+                transform: rotate(720deg);
+            }
+            .lose{
+                transform: scale(0.9);
+            }
+            .button{
+                height: 30px;
+                margin-left: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            <form name="form1">
+                <label for="ticketNum">頭の数:</label>
+                <input type="number" name="num" min="0" max="100" value="1">
+            </form>
+            <input type="button" onclick="disabled = true;clickBtn()" id="button0" value="作成" class="button">
+            <input type="button" value="クリア" onclick="getElementById('button0').disabled = false;clearBtn()" class="button">
+        </p>
+
+        <a id="parent"></a>
+
+        <script>
+            'use script';
+
+            function clickBtn(){
+                const headNum = document.form1.num.value;
+                const num=headNum*100;
+                var parent = document.getElementById("parent");
+                for(let i=num;i<num+100;i++){
+                    
+                    const kazu = i+1
+                    if (kazu%2!==0&&kazu%5!==0){
+                        const div=document.createElement("div");
+                        div.classList.add('box');
+                        div.textContent = kazu
+        
+                        div.addEventListener('click',()=>{
+                            if (primeNumber(i+1)){
+                                div.textContent='Prime!';
+                                div.classList.add('win');
+                            }else{
+                                div.textContent='No!';
+                                div.classList.add('lose');
+                            }
+                        })
+                        document.body.appendChild(div);
+                    }
+                }
+            }
+
+            function clearBtn(){
+                var element = document.getElementById("body");
+                while (element.firstChild) {
+                    element.removeChild(element.firstChild);
+                }
+            }
+
+            function primeNumber (num) {
+                if(num === 2) {
+                    return true;
+                } else {
+                    for(i = 2; i < num; i++) {
+                        if(num % i === 0) {
+                            return false;
+                            break;
+                        }
+                        if(i + 1 === num) {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+        </script>
+    </body>
+</html>

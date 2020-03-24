@@ -7,6 +7,7 @@
             body{
                 flex-wrap: wrap;
                 background: #efefef;
+                align-items: center
             }
             .parent{
                 display: flex;
@@ -21,7 +22,7 @@
                 text-align: center;
                 line-height: 60px;
                 user-select: none;
-                display: flex;
+                /* display: flex; */
             }
             .win{
                 background-color: pink;
@@ -38,7 +39,7 @@
         </style>
     </head>
     <body>
-        <div class="parent">
+        <div class="parent" name="form">
             <form name="form1">
                 <label for="ticketNum">頭の数:</label>
                 <input type="number" name="num" min="0" max="100" value="1">
@@ -56,33 +57,32 @@
                 const pop = document.querySelector('#pop')
 
                 for(let i = 0 ; i < 10 ; i++ ){
-                    
-                    const kazu = headNum*100+i*10;
                     const parent = document.createElement('div');
                     parent.className = 'parent';
                     parent.id = "parent";
 
                     for(let j = 0; j < 4; j++){
                         const child = document.createElement("div");
+                        child.classList.add('box');
+                        let kazu = headNum*100+i*10;
                         switch(j){
                             case 0:
-                                kaze = kazu + 1;
+                                kazu += 1;
                                 break;
                             case 1:
-                                kaze = kazu + 3;
+                                kazu += 3;
                                 break;
                             case 2:
-                                kaze = kazu + 7;
+                                kazu += 7;
                                 break;
                             case 3:
-                                kaze = kazu + 9;
+                                kazu += 9;
                                 break;
                         }
-                        child.textContent = kaze
-                        child.classList.add('box');
+                        child.textContent = kazu
         
                         child.addEventListener('click',()=>{
-                            if (primeNumber(kaze)){
+                            if (primeNumber(kazu)){
                                 child.textContent = 'Prime!';
                                 child.classList.add('win');
                             }else{

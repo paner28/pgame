@@ -11,6 +11,7 @@
             }
             .parent{
                 display: flex;
+                vertical-align: middle;
             }
             .box{
                 width: 60px;
@@ -39,10 +40,23 @@
         </style>
     </head>
     <body>
+        <a><b>素数ゲーム</b></a><br>
+        <a>プルダウンから好きな数字を選び、作成を押してください。素数だと思うカードをタッチして、もし素数だとPrime!と表示されます。クリアを押すことで、最初の状態に戻ります</a>
         <div class="parent" name="form">
             <form name="form1">
-                <label for="ticketNum">頭の数:</label>
-                <input type="number" name="num" min="0" max="100" value="1">
+                <select name="num">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=6>6</option>
+                    <option value=7>7</option>
+                    <option value=8>8</option>
+                    <option value=9>9</option>
+                    <option value=10>10</option>
+                </select>
             </form>
             <input type="button" onclick="disabled = true;clickBtn()" id="button0" value="作成" class="button">
             <input type="button" value="クリア" onclick="getElementById('button0').disabled = false;clearBtn()" class="button">

@@ -3,14 +3,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-        <title></title>
+        <title>JavaScript Practice</title>
         <style>
             body{
                     flex-wrap: wrap;
                     background: #efefef;
                     align-items: center
                 }
-
             .bar{
                 display: flex;
                 vertical-align: middle;
@@ -21,6 +20,7 @@
                 vertical-align: middle;
                 width: 270px;
                 margin: auto;
+                z-index: 1;
             }
             .box{
                 width: 60px;
@@ -33,6 +33,7 @@
                 line-height: 60px;
                 user-select: none;
                 /* display: flex; */
+                z-index: auto;
             }
             .win{
                 background-color: pink;
@@ -46,6 +47,29 @@
                 height: 30px;
                 margin-left: 5px;
             }
+
+            div.tooltip1{
+                color: #555;
+                display: inline-block;                        /* インライン要素化 */
+            }
+            div.tooltip1 span {
+                display: none;
+            }
+            div.tooltip1:hover {
+                position: relative;
+                color: rgb(158, 97, 97);
+            }
+            div.tooltip1:hover span {
+                display: block;
+                position: absolute;
+                top: 50px;
+                color: #fff;
+                background-color: #51A2C1;
+                width: 50px;
+                /* padding: 5px; */
+                border-radius:3px;
+                z-index:2;
+            }
         </style>
     </head>
     <body>
@@ -54,17 +78,11 @@
         <div class="bar" name="form">
             <form name="form1">
                 <select name="num">
-                    <option value=0>0</option>
-                    <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
-                    <option value=4>4</option>
-                    <option value=5>5</option>
-                    <option value=6>6</option>
-                    <option value=7>7</option>
-                    <option value=8>8</option>
-                    <option value=9>9</option>
-                    <option value=10>10</option>
+                    <script>
+                        for (let i = 0 ; i < 30 ; i++ ){
+                            document.write( '<option value="'+i+'">' + i + '</option>' );
+                        }
+                    </script>
                 </select>
             </form>
             <input type="button" onclick="disabled = true;clickBtn()" id="button0" value="作成" class="button">
@@ -74,7 +92,7 @@
 
         <script>
             'use script';
-
+            
             function clickBtn(){
                 const headNum = document.form1.num.value;
                 const pop = document.querySelector('#pop')
@@ -83,9 +101,11 @@
                     const parent = document.createElement('div');
                     parent.className = 'parent';
                     parent.id = "parent";
-
+                    
                     for(let j = 0; j < 4; j++){
                         const child = document.createElement("div");
+                        child.className = "child";
+                        child.id = "child";
                         child.classList.add('box');
                         let kazu = headNum*100+i*10;
                         switch(j){
@@ -102,8 +122,10 @@
                                 kazu += 9;
                                 break;
                         }
-                        child.textContent = kazu
-        
+                        child.textContent = kazu;
+                        // child.title = kazu;
+
+                        
                         child.addEventListener('click',()=>{
                             if (primeNumber(kazu)){
                                 child.textContent = 'Prime!';
@@ -112,11 +134,15 @@
                                 child.textContent = 'No!';
                                 child.classList.add('lose');
                             }
+                            const chip = document.createElement("span");
+                            child.classList.add("tooltip1");
+                            chip.textContent = kazu;
+                            child.appendChild(chip);
                         })
+                        
                         parent.appendChild(child);
                     }
                 pop.appendChild(parent);
-                    
                 }
             }
 
@@ -144,5 +170,6 @@
             }
 
         </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     </body>
 </html>

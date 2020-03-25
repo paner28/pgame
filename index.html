@@ -5,10 +5,11 @@
         <title>JavaScript Practice</title>
         <style>
             body{
-                flex-wrap: wrap;
-                background: #efefef;
-                align-items: center
-            }
+                    flex-wrap: wrap;
+                    background: #efefef;
+                    align-items: center
+                }
+
             .bar{
                 display: flex;
                 vertical-align: middle;
@@ -43,6 +44,16 @@
             .button{
                 height: 30px;
                 margin-left: 5px;
+            }
+            @media screen and (max-width: 480px){
+                body{
+                    background-color: blue;
+                }
+            }
+            @media screen and (min-width: 781px){
+                body{
+                    background-color: red;
+                }
             }
         </style>
     </head>

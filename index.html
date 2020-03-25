@@ -6,9 +6,9 @@
         <title>JavaScript Practice</title>
         <style>
             body{
-                    flex-wrap: wrap;
-                    background: #efefef;
-                    align-items: center
+                flex-wrap: wrap;
+                background: #efefef;
+                align-items: center
                 }
             .bar{
                 display: flex;
@@ -20,7 +20,6 @@
                 vertical-align: middle;
                 width: 270px;
                 margin: auto;
-                z-index: 1;
             }
             .box{
                 width: 60px;
@@ -32,8 +31,8 @@
                 text-align: center;
                 line-height: 60px;
                 user-select: none;
-                /* display: flex; */
-                z-index: auto;
+                position: static;
+                z-index: 1;
             }
             .win{
                 background-color: pink;
@@ -47,10 +46,9 @@
                 height: 30px;
                 margin-left: 5px;
             }
-
             div.tooltip1{
-                color: #555;
-                display: inline-block;                        /* インライン要素化 */
+                /* color: #555; */
+                display: inline-block;
             }
             div.tooltip1 span {
                 display: none;
@@ -58,17 +56,31 @@
             div.tooltip1:hover {
                 position: relative;
                 color: rgb(158, 97, 97);
+                z-index: 3;
             }
-            div.tooltip1:hover span {
+            div.tooltip1:hover span.baloon {
                 display: block;
                 position: absolute;
-                top: 50px;
+                top: 65px;
                 color: #fff;
                 background-color: #51A2C1;
-                width: 50px;
-                /* padding: 5px; */
+                width: 55px;
                 border-radius:3px;
-                z-index:2;
+            }
+            div.tooltip1 span.baloon:before{
+                content:''; 
+                display:block; 
+                position:absolute;
+                height:0; 
+                width:0; 
+                top:-13px; 
+                left:15px;
+                border:13px transparent solid; 
+                border-right-width:0; 
+                border-left-color:#51A2C1; 
+                transform:rotate(270deg);
+                -webkit-transform:rotate(270deg);
+                -o-transform:rotate(270deg);
             }
         </style>
     </head>
@@ -135,6 +147,7 @@
                                 child.classList.add('lose');
                             }
                             const chip = document.createElement("span");
+                            chip.classList.add("baloon")
                             child.classList.add("tooltip1");
                             chip.textContent = kazu;
                             child.appendChild(chip);
@@ -168,8 +181,6 @@
                     }
                 }
             }
-
         </script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     </body>
 </html>

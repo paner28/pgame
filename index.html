@@ -3,97 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
         <title>JavaScript Practice</title>
-        <style>
-            body{
-                flex-wrap: wrap;
-                background: #efefef;
-                align-items: center
-                }
-            .bar{
-                display: flex;
-                vertical-align: middle;
-                width: 150px;
-            }
-            .parent{
-                display: flex;
-                vertical-align: middle;
-                width: 270px;
-                margin: auto;
-            }
-            .box{
-                width: 60px;
-                height: 60px;
-                background-color: skyblue;
-                cursor: pointer;
-                transition: 0.8s;
-                margin: 8px 4px 0 4px;
-                text-align: center;
-                line-height: 60px;
-                user-select: none;
-                position: static;
-                z-index: 1;
-            }
-            .win{
-                background-color: pink;
-                border-radius: 50%;
-                transform: rotate(720deg);
-            }
-            .lose{
-                transform: scale(0.9);
-            }
-            .button{
-                height: 30px;
-                margin-left: 5px;
-            }
-
-            @keyframes show{
-                from{
-                    opacity: 0;
-                }
-                to{
-                    opacity: 1;
-                }
-            }
-            div.tooltip1{
-                /* color: #555; */
-                display: inline-block;
-            }
-            div.tooltip1 span {
-                display: none;
-                transition: all 2s 0s ease;
-            }
-            div.tooltip1:hover {
-                position: relative;
-                color: rgb(158, 97, 97);
-                z-index: 3;
-            }
-            div.tooltip1:hover span {
-                display: block;
-                animation: show 0.6s linear 0s;
-                position: absolute;
-                top: 65px;
-                color: #fff;
-                background-color: #51A2C1;
-                width: 55px;
-                border-radius:3px;
-            }
-            div.tooltip1 span:before{
-                content:''; 
-                display:block; 
-                position:absolute;
-                height:0; 
-                width:0; 
-                top:-13px; 
-                left:15px;
-                border:13px transparent solid; 
-                border-right-width:0; 
-                border-left-color:#51A2C1; 
-                transform:rotate(270deg);
-                -webkit-transform:rotate(270deg);
-                -o-transform:rotate(270deg);
-            }
-        </style>
     </head>
     <body>
         <h1><b>素数ゲーム</b></h1>
@@ -102,9 +13,7 @@
             <form name="form1">
                 <select name="num">
                     <script>
-                        for (let i = 0 ; i < 30 ; i++ ){
-                            document.write( '<option value="'+i+'">' + i + '</option>' );
-                        }
+                        for (let i = 0 ; i < 30 ; i++ ){document.write( '<option value="'+i+'">' + i + '</option>' );}
                     </script>
                 </select>
             </form>
@@ -113,85 +22,6 @@
         </div>
         <div id="pop"></div>
 
-        <script>
-            'use script';
-            
-            function clickBtn(){
-                const headNum = document.form1.num.value;
-                const pop = document.querySelector('#pop')
-
-                for(let i = 0 ; i < 10 ; i++ ){
-                    const parent = document.createElement('div');
-                    parent.className = 'parent';
-                    parent.id = "parent";
-                    
-                    for(let j = 0; j < 4; j++){
-                        const child = document.createElement("div");
-                        child.className = "child";
-                        child.id = "child";
-                        child.classList.add('box');
-                        let kazu = headNum*100+i*10;
-                        switch(j){
-                            case 0:
-                                kazu += 1;
-                                break;
-                            case 1:
-                                kazu += 3;
-                                break;
-                            case 2:
-                                kazu += 7;
-                                break;
-                            case 3:
-                                kazu += 9;
-                                break;
-                        }
-                        child.textContent = kazu;
-                        // child.title = kazu;
-
-                        
-                        child.addEventListener('click',()=>{
-                            if (primeNumber(kazu)){
-                                child.textContent = 'Prime!';
-                                child.classList.add('win');
-                            }else{
-                                child.textContent = 'No!';
-                                child.classList.add('lose');
-                            }
-                            const chip = document.createElement("span");
-                            chip.classList.add("baloon")
-                            child.classList.add("tooltip1");
-                            chip.textContent = kazu;
-                            child.appendChild(chip);
-                        })
-                        
-                        parent.appendChild(child);
-                    }
-                pop.appendChild(parent);
-                }
-            }
-
-            function clearBtn(){
-                var element = document.getElementById("pop");
-                while (element.firstChild) {
-                    element.removeChild(element.firstChild);
-                }
-            }
-
-            function primeNumber (num) {
-                if(num === 2) {
-                    return true;
-                } else {
-                    for(i = 2; i < num; i++) {
-                        if(num % i === 0) {
-                            return false;
-                            break;
-                        }
-                        if(i + 1 === num) {
-                            return true;
-                        }
-                    }
-                }
-            }
-        </script>
+        <script src="js/main.js"></script>
     </body>
 </html>

@@ -3,24 +3,28 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
         <title>素数ゲーム</title>
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <h1><b>素数ゲーム</b></h1>
         <p>プルダウンから好きな数字を選び、作成を押してください。素数だと思うカードをタッチして、もし素数だとPrime!と表示されます。クリアを押すことで、最初の状態に戻ります</p>
-        <div class="bar" name="form">
+        <div class="bar" name="form" id="bar">
             <form name="form1">
                 <select name="num">
                     <script>
                         for (let i = 0 ; i < 30 ; i++ ){document.write( '<option value="'+i+'">' + i + '</option>' );}
+                        // マックスの値を変更することで選択できる数が増える
                     </script>
                 </select>
             </form>
             <input type="button" onclick="disabled = true;clickBtn()" id="button0" value="作成" class="button">
+            <!-- 一度押されるとクリアボタンを押すまで押せない。クリックボタン関数が動く -->
             <input type="button" value="クリア" onclick="getElementById('button0').disabled = false;clearBtn()" class="button">
+            <!-- クリアボタン関数が動く -->
         </div>
-        <div id="pop"></div>
+        <div id="pop" class="pop"></div>
+        <!-- idがpopのdivに色々追加して、クリアボタンでこのdivの中身をすべて消す -->
 
         <script src="js/main.js"></script>
     </body>

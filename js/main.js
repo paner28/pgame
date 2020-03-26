@@ -31,8 +31,6 @@
                         break;
                 }
                 child.textContent = kazu;
-                // child.title = kazu;
-    
                 
                 child.addEventListener('click',()=>{
                     if (primeNumber(kazu)){
@@ -78,4 +76,3 @@
         }
     }
 }
-            

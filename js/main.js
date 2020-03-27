@@ -48,12 +48,13 @@
                         child.textContent = 'Prime!';
                         child.classList.add('win');
                         k--
-                        console.log(k)
                         nokori.textContent = "残り"+k+"個です"
                         flag = 1
                         if (k===0){
                             nokori.textContent = "Congratulations!!!"
                             nokori.className = 'nokori0';
+                            model.classList.remove("hidden");
+                            mask.classList.remove("hidden");
                         }
                     }else{
                         child.textContent = 'No!';
@@ -79,6 +80,19 @@
             element.removeChild(element.firstChild);
         }
     }
+
+    const close = document.getElementById("close");
+    const model = document.getElementById("model");
+    const mask = document.getElementById("mask");
+
+    close.addEventListener("click" , () => {
+        model.classList.add("hidden");
+        mask.classList.add("hidden");
+    })
+    mask.addEventListener("click" , () => {
+        close.click();
+    })
+
     
     // 素数判定
     function primeNumber (num) {

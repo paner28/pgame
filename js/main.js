@@ -18,7 +18,7 @@
             parent.className = 'parent';
             parent.id = "parent";
             
-            for(let j = 0; j < 4; j++){
+            for(let j = 0; j < 6; j++){
                 const child = document.createElement("div");
                 child.className = "child";
                 child.id = "child";
@@ -26,17 +26,23 @@
                 let kazu = headNum*100+i*10;
                 switch(j){
                     case 0:
-                        kazu += 1;
-                        break;
-                        case 1:
-                        kazu += 3;
-                        break;
-                        case 2:
-                            kazu += 7;
-                        break;
-                        case 3:
-                        kazu += 9;
-                        break;
+                    kazu += 1;
+                    break;
+                    case 1:
+                    kazu += 3;
+                    break;
+                    case 2:
+                        kazu += 7;
+                    break;
+                    case 3:
+                    kazu += 9;
+                    break;
+                    case 4:
+                    kazu = (kazu+1)*10+1;
+                    break;
+                    case 5:
+                    kazu = (kazu+1)*10+3;
+                    break;
                 }
                 child.textContent = kazu;
                 if (primeNumber(kazu)){

@@ -59,6 +59,13 @@ body{
 .parent{
     display: flex;
     vertical-align: middle;
+    width: 270px;
+    margin: auto;
+}
+
+.parent2{
+    display: flex;
+    vertical-align: middle;
     width: 400px;
     margin: auto;
 }

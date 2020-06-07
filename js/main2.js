@@ -15,7 +15,7 @@
         
         for(let i = 0 ; i < 10 ; i++ ){
             const parent = document.createElement('div');
-            parent.className = 'parent';
+            parent.className = 'parent2';
             parent.id = "parent";
             
             for(let j = 0; j < 6; j++){

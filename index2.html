@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+        <meta name="description" content="素数であると思う数をタップして遊ぶゲーム。間違えずに全てタップできるように頑張ろう！">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@tus_toshi1213" /> 
+        <meta property="og:url" content="https://paner28.github.io/primegame/" /> 
+        <meta property="og:title" content="素数ゲーム" />
+        <meta property="og:description" content="プルダウンから好きな数字を選び、作成を押してください。素数だと思うカードをタッチして、もし素数だとPrime!と表示されます。クリアを押すことで、最初の状態に戻ります" />
+        <meta property="og:image" content="https://paner28.github.io/primegame/png/picture.jpg" />
+        <title>素数ゲーム</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1><b>素数ゲーム</b></h1>
+        <p>プルダウンから好きな数字を選び、作成を押してください。素数だと思うカードをタッチして、もし素数だとPrime!と表示されます。クリアを押すことで、最初の状態に戻ります</p>
+        <div class="bar" name="form" id="bar">
+            <form name="form1">
+                <select name="num">
+                    <script>
+                        for (let i = 0 ; i < 101 ; i++ ){document.write( '<option value="'+i+'">' + i + '</option>' );}
+                        // マックスの値を変更することで選択できる数が増える
+                    </script>
+                </select>
+            </form>
+            <input type="button" onclick="disabled = true;clickBtn()" id="button0" value="作成" class="button">
+            <!-- 一度押されるとクリアボタンを押すまで押せない。クリックボタン関数が動く -->
+            <input type="button" value="クリア" onclick="getElementById('button0').disabled = false;clearBtn()" class="button">
+            <!-- クリアボタン関数が動く -->
+            <a href="index.html" class="mode1">イージーモード</a>
+        </div>
+        <div id="pop" class="pop"></div>
+        <!-- idがpopのdivに色々追加して、クリアボタンでこのdivの中身をすべて消す -->
+
+        <div id="mask" class="hidden"></div>
+
+        <section id="model" class="hidden">
+            <p>Congratulation!!!</p>
+            <div id="close">閉じる</div>
+        </section>
+
+        <script src="js/main2.js"></script>
+    </body>
+</html>

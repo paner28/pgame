@@ -27,6 +27,30 @@ body{
 }
 /* 残りの数が0になった時のCSS */
 
+.mode1{
+    width: 120px;
+    height: 22px;
+    background-color: rgb(228, 188, 236);
+    cursor: pointer;
+    margin: 0px 6px 0 4px;
+    padding: 4px;
+    text-align: center;
+    user-select: none;
+    position: static;
+}
+
+.mode2{
+    width: 100px;
+    height: 22px;
+    background-color: rgb(255, 37, 37);
+    cursor: pointer;
+    margin: 0px 6px 0 4px;
+    padding: 4px;
+    text-align: center;
+    user-select: none;
+    position: static;
+}
+
 .pop{
     margin-bottom: 100px;
 }
@@ -60,7 +84,8 @@ body{
 }
 
 .lose{
-    transform: scale(0.9);
+    background-color: rgb(65, 154, 255);
+    transform: scale(0.8);
 }
 
 .button{
@@ -78,7 +103,7 @@ body{
     }
 }
 /* 以下ツールチップに関するもの */
-div.tooltip1{
+/* div.tooltip1{
     display: inline-block;
 }
 div.tooltip1 span {
@@ -114,7 +139,7 @@ div.tooltip1 span:before{
     transform:rotate(270deg);
     -webkit-transform:rotate(270deg);
     -o-transform:rotate(270deg);
-}
+} */
 
 #close{
     cursor: pointer;

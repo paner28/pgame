@@ -18,7 +18,7 @@
             parent.className = 'parent';
             parent.id = "parent";
             
-            for(let j = 0; j < 4; j++){
+            for(let j = 0; j < 6; j++){
                 const child = document.createElement("div");
                 child.className = "child";
                 child.id = "child";
@@ -37,6 +37,12 @@
                     case 3:
                     kazu += 9;
                     break;
+                    case 4:
+                    kazu = (kazu+1)*10+1;
+                    break;
+                    case 5:
+                    kazu = (kazu+1)*10+3;
+                    break;
                 }
                 child.textContent = kazu;
                 if (primeNumber(kazu)){
@@ -45,6 +51,7 @@
                 
                 child.addEventListener('click',()=>{
                     if (primeNumber(kazu)){
+                        // child.textContent = 'Prime!';
                         child.classList.add('win');
                         k--
                         nokori.textContent = "残り"+k+"個です"
@@ -56,6 +63,7 @@
                             mask.classList.remove("hidden");
                         }
                     }else{
+                        // child.textContent = 'No!';
                         child.classList.add('lose');
                     }
                     const chip = document.createElement("span");
